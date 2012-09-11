@@ -1,0 +1,47 @@
+#tenginspector                              { font-family: Lucida Grande, sans-serif; font-size: 10px; }
+#panel                                      { left: 0; }
+#sidebar                                    { border-left: 1px solid #A3A3A3; right: 0; }
+.content-wrap                               { position: absolute; top: 0; bottom: 0; overflow: auto; cursor: default; }
+#resizer                                    { position: absolute; top: 0; bottom: 0; width: 5px; z-index: 500; cursor: ew-resize; }
+#search 									{ position: absolute; right: 0px; border-top: 1px solid #ccc; width: 100%; padding: 5px 0; background: #fff; }
+#search input 								{ width: 50%; margin: 0 5px; }
+#search span 								{ color: #333; }
+
+ol                                          { list-style-type: none; padding: 0 0 0 1em; margin: 0; display: none; }
+ol.expanded                                 { display: block; }
+ol.main                                     { padding: 0; display: block; }
+ol.main > li.parent                         { margin-left: 1em; }
+
+li                                          { padding: 0 0 0 1em; line-height: 1.5em; }
+li.parent                                   { padding-left: 1em; background: url(img/treeRightTriangleBlack.png) left 3px no-repeat; }
+li.parent > .name                           { color: #C41A16; display: block; cursor: pointer; }
+li.expanded                                 { background: url(img/treeDownTriangleBlack.png) left 5px no-repeat !important; }
+ol.children > li                            { padding-left: 1em; background: url(img/treeRightTriangleBlack.png) left 3px no-repeat; }
+ol.children > li .name                      { display: block; cursor: pointer; }
+li.prop .name                               { display: inline !important; }
+li .value                                   { color: green; }
+
+#panel .prop                                { white-space: nowrap; }
+#panel .prop:hover,
+#panel li.parent > .name:hover,
+#panel ol.children > li .name:hover 		{ background-color: rgba(56, 121, 217, 0.1); }
+
+#panel .prop.selected,
+#panel li.parent.selected > .name			{ background-color: #fff656; }
+
+.pane.last 									{ padding-bottom: 32px; }
+.pane > h6                                  { background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 243, 243)), color-stop(0.05, rgb(243, 243, 243)), color-stop(0.05, rgb(230, 230, 230)), to(rgb(209, 209, 209))); height: 20px; padding: 0 5px; margin: 0; border-bottom: 1px solid rgb(189, 189, 189); font-weight: bold; font-size: 12px; line-height: 18px; color: rgb(110, 110, 110); text-shadow: white 0 1px 0; -webkit-background-origin: padding; -webkit-background-clip: padding; cursor: pointer; }
+.pane > h6:active                           { background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(231, 231, 231)), color-stop(0.05, rgb(231, 231, 231)), color-stop(0.05, rgb(207, 207, 207)), to(rgb(186, 186, 186))); border-bottom: 1px solid rgb(178, 178, 178); }
+.pane > h6::before                          { content: url(img/disclosureTriangleSmallRightBlack.png); float: left; width: 11px; height: 12px; margin-right: 2px; margin-top: 1px; }
+.pane.expanded > h6::before                 { content: url(img/disclosureTriangleSmallDownBlack.png); }
+
+.pane .body                                 { display: none; }
+.pane.expanded .body                        { display: block; }
+
+.pane .body li                              { line-height: 2em; }
+.pane .body li:nth-child(odd)               { background-color: #e8e8e8; }
+
+.pane.list .name,
+.pane.list .separator                       { display: none !important; }
+.pane.list .value                           { color: #000; }
+.pane.errors .body li .value                { color: red; font-weight: bold; }

@@ -1,0 +1,14 @@
+{
+	"name": "Teng Inspector",
+	"description": "Zobrazuje tengový výpis v Developer Tools",
+	"version": "1.0",
+	"icons": {
+		"16": "/img/teng_16.png",
+		"48": "/img/teng_48.png",
+		"128": "/img/teng_128.png"
+	},
+	"devtools_page": "devtools.html",
+	"background": {
+		"page": "background.html"
+	 }
+}
