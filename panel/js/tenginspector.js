@@ -15,7 +15,7 @@ var TENGINS = {
 
         // vytvorime HTML strukturu dat a zobrazime v panelu
         var panelData = new DOMBuilder(parser.getData('Application data:'));
-        document.getElementById('panel').appendChild(panelData.getResult());
+        TENGINS.dom.panel.appendChild(panelData.getResult());
 
         // vytvorime zalozky v sidebaru
         new Errors(source.errors);
