@@ -51,8 +51,8 @@ TengDevtools.prototype._createPanel = function () {
 			});
 
 			// vyhledavani v panelu
-			/******************************************************** 
-			 * v stable (chrome 21) je to nejaky rozbity (https://bugs.webkit.org/show_bug.cgi?id=89517) 
+			/********************************************************
+			 * v stable (chrome 21) je to nejaky rozbity (https://bugs.webkit.org/show_bug.cgi?id=89517)
 			 * v bete by to melo byt opraveny, ale neni
 			 * prozatim se vyhledava pres specialni input vytvoreny primo v panelu
 			 *********************************************************/

@@ -60,9 +60,9 @@ UI.ClickHandler = function () {
 UI.ClickHandler.prototype._handleClick = function (e) {
 	var elm = e.target;
 
-	if (Utils.hasClass(elm, 'name')) {
+	if (elm.classList.contains('name')) {
 		this._handleParentNodeClick(elm);
-	} else if (Utils.hasClass(elm, 'paneTitle')) {
+	} else if (elm.classList.contains('paneTitle')) {
 		this._handlePaneTitleClick(elm);
 	}
 };
@@ -72,16 +72,11 @@ UI.ClickHandler.prototype._handleClick = function (e) {
  */
 UI.ClickHandler.prototype._handleParentNodeClick = function (elm) {
 	var parent = elm.parentNode;
-    var children = parent.getElementsByTagName('ol')[0];
+    var child = parent.querySelector('ol');
 
-    if (children) {
-        if (Utils.hasClass(children, 'expanded')) {
-            Utils.removeClass(children, 'expanded');
-            Utils.removeClass(parent, 'expanded');
-        } else {
-            Utils.addClass(children, 'expanded');
-            Utils.addClass(parent, 'expanded');
-        }
+    if (child) {
+    	child.classList.toggle('expanded');
+    	parent.classList.toggle('expanded');
     }
 };
 
@@ -89,21 +84,15 @@ UI.ClickHandler.prototype._handleParentNodeClick = function (elm) {
  * Zobrazuje nebo schovava obsah zalozky v sidebaru
  */
 UI.ClickHandler.prototype._handlePaneTitleClick = function (elm) {
-	var pane = elm.parentNode;
-
-	if (Utils.hasClass(pane, 'expanded')) {
-		Utils.removeClass(pane, 'expanded');
-	} else {
-		Utils.addClass(pane, 'expanded');
-	}
+	elm.parentNode.classList.toggle('expanded');
 
 	// zjistime otevrene zalozky a posleme k ulozeni do local storage
-	var panes = TENGINS.dom.sidebar.getElementsByClassName('pane');
+	var panes = TENGINS.dom.sidebar.querySelectorAll('.pane');
 	var openPanes = [];
-	for (var i = 0; i < panes.length; i++) {
-		if (Utils.hasClass(panes[i], 'expanded')) {
-			openPanes.push(panes[i].getElementsByTagName('h6')[0].innerHTML);
+	[].forEach.call(panes, function (pane, i, arr) {
+		if (pane.classList.contains('expanded')) {
+			openPanes.push(pane.querySelector('h6').innerHTML);
 		}
-	}
+	});
 	chrome.extension.sendRequest({'action': 'setOpenPanes', 'titles': openPanes.join()});
 };

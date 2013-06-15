@@ -6,7 +6,7 @@ DOMBuilder = function (data) {
 	this.data = data;
 
 	this.wrap = document.createElement('ol');
-	this.wrap.className = 'main';
+	this.wrap.classList.add('main');
 
 	for (var key in data) {
 		this.wrap.appendChild(this._build(key, data[key]));
@@ -17,29 +17,29 @@ DOMBuilder.prototype._build = function (itemName, itemValue) {
 	var li = document.createElement('li');
 
 	var name = document.createElement('span');
-	name.className = "name";
+	name.classList.add('name');
 	name.innerHTML = itemName;
 
 	var separator = document.createElement('span');
-	separator.className = 'separator';
+	separator.classList.add('separator');
 	separator.innerHTML = ': ';
 
 	var value = document.createElement('span');
-	value.className = 'value';
+	value.classList.add('value');
 
 	if (itemValue instanceof Array) { // subfragment
-		li.className = 'parent';
+		li.classList.add('parent');
 		var children = document.createElement('ol');
-		children.className = "children";
-		Utils.addClass(name, 'search');
+		children.classList.add('children');
+		name.classList.add('search');
 		li.appendChild(name);
 		for (var i = 0; i < itemValue.length; i++) { children.appendChild(this._buildSubfragment(itemName, i, itemValue[i])); }
 		li.appendChild(children);
 	} else { // promenna
 		value.innerHTML = '"'+itemValue+'"';
-		li.className = 'prop';
-		Utils.addClass(name, 'search');
-		Utils.addClass(value, 'search');
+		li.classList.add('prop');
+		name.classList.add('search');
+		value.classList.add('search');
 		li.appendChild(name);
 		li.appendChild(separator);
 		li.appendChild(value);
@@ -51,13 +51,13 @@ DOMBuilder.prototype._build = function (itemName, itemValue) {
 DOMBuilder.prototype._buildSubfragment = function (itemName, i, itemData) {
 	var li = document.createElement('li');
 	var name = document.createElement('span');
-	name.className = "name";
+	name.classList.add('name');
 	name.innerHTML = itemName+'['+i+']';
 	li.appendChild(name);
 
 	var wrap = document.createElement('ol');
 	for (var key in itemData) {
-		wrap.appendChild(this._build(key, itemData[key]))	;
+		wrap.appendChild(this._build(key, itemData[key]));
 	}
 	li.appendChild(wrap);
 

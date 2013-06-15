@@ -19,5 +19,5 @@ Errors = function (source) {
 Errors.prototype._build = function () {
 	// zobrazime jako zalozku v sidebaru
 	var pane = new SidebarPane('Chyby', this.errors, 'list errors');
-	Utils.addClass(pane.dom.pane, 'expanded');
+	pane.dom.pane.classList.add('expanded');
 };
