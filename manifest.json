@@ -1,7 +1,7 @@
 {
 	"name": "Teng Inspector",
 	"description": "Zobrazuje tengový výpis v Developer Tools",
-	"version": "1.0",
+	"version": "1.0.1",
 	"manifest_version": 2,
 	"icons": {
 		"16": "/img/teng_16.png",
